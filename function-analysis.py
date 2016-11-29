@@ -1,8 +1,7 @@
-"""
-function = str(input("Function: "))
-a = str(input("Left Endpoint: "))
-b = str(input("Right Endpoint: "))
-"""
+
+function = input("Function: "))
+a = input("Left Endpoint: "))
+b = input("Right Endpoint: "))
 
 def f(x):
     return x**2
@@ -20,6 +19,14 @@ def derivative(x):
     slope = rise / run
     return slope
 
+
+
+
+
+
+
+
+"""
 print(round(derivative(-3),5))
 print(round(derivative(-2),5))
 print(round(derivative(-1),5))
@@ -27,12 +34,12 @@ print(round(derivative(0),5))
 print(round(derivative(1),5))
 print(round(derivative(2),5))
 print(round(derivative(3),5))
-
+"""
 
 def second(x):
-    g = 1/1000000000
-    top = f(x + 2*g) - f(x + g) - f(x + g) + f(x)
-    bottom = g*g
+    h = 1/1000000000
+    top = derivative(x + h) - derivative(x)
+    bottom = h
     answers = top / bottom
     return answers
 
