@@ -54,9 +54,9 @@ for q in range(1,len(derivative_list)-1):
 
 local_extrema.append([b, round(derivative(b), 2)])
 
-l_extrema = "Extrema: "
+l_extrema = "Extrema Points (X, Y): "
 for ty in local_extrema:
-    l_extrema = l_extrema + " (" + ty[0] + ", " + str(round(f(ty[0]), 3)) + ") "
+    l_extrema = l_extrema + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
 print(l_extrema)
 
 
