@@ -18,7 +18,7 @@ def derivative(x):
     rise = f(x + h) - f(x)
     run = h
     slope = rise / run
-    return round(slope, 4)
+    return round(slope, 7)
 
 print(derivative(-1))
 
