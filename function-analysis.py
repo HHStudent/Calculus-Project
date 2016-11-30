@@ -1,10 +1,10 @@
 
-function = input("Function: "))
-a = input("Left Endpoint: "))
-b = input("Right Endpoint: "))
+function = input("Function: ").replace("^", "**")
+a = input("Left Endpoint: ")
+b = input("Right Endpoint: ")
 
 def f(x):
-    return x**2
+    return eval(function.replace("x", str(x)))
 
 #def f(x):
 #    return x**2
@@ -19,7 +19,7 @@ def derivative(x):
     slope = rise / run
     return slope
 
-
+print(derivative(-1))
 
 
 
@@ -43,7 +43,7 @@ def second(x):
     answers = top / bottom
     return answers
 
-print(second(-1))
+#print(second(-1))
 
 """
 def secondderivative(x):
