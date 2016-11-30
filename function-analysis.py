@@ -1,4 +1,5 @@
 
+
 function = input("Function: ").replace("^", "**")
 #a = input("Left Endpoint: ")
 #b = input("Right Endpoint: ")
@@ -7,28 +8,35 @@ function = input("Function: ").replace("^", "**")
 def f(x):
     return eval(function.replace("x", "("+str(x)+")"))
 
+
 #def f(x):
 #    return x**2
 
+
 a = -1
 b = 1
+
 
 def derivative(x):
     h = 1/1000000
     rise = f(x + h) - f(x)
     run = h
     slope = rise / run
-    return round(slope, 7)
+    return round(slope, 9)
 
-print(derivative(-1))
+
+#print(derivative(-1))
+
 
 derivative_list = []
 
-for x in range(a*100, (b*100)+1):
-    r = x/100
+
+for x in range(a*1000, (b*1000)+1):
+    r = x/1000
     derivative_list.append([r, derivative(r)])
     
-print(derivative_list)
+#print(derivative_list)
+
 
 local_extrema = [[a, derivative(a)]]
 for q in range(1,len(derivative_list)-1):
@@ -48,9 +56,12 @@ for q in range(1,len(derivative_list)-1):
         elif next_deriv < 0 and prev_deriv > 0:
             local_extrema.append(derivative_list[q])
 
+
 local_extrema.append([b, derivative(b)])
 
+
 print("local_extrema: " + str(local_extrema))
+
 
 increasing_ivals = "Increasing: "
 decreasing_ivals = "Decreasing: "
@@ -69,8 +80,12 @@ while not isdone:
     if current_index > (len(local_extrema) - 2):
         isdone = True
 
+
 print(increasing_ivals)
 print(decreasing_ivals)
+
+
+
 
 
 
@@ -84,6 +99,7 @@ print(round(derivative(2),5))
 print(round(derivative(3),5))
 """
 
+
 def second(x):
     h = 1/1000000000
     top = derivative(x + h) - derivative(x)
@@ -91,7 +107,9 @@ def second(x):
     answers = top / bottom
     return answers
 
+
 #print(second(-1))
+
 
 """
 def secondderivative(x):
@@ -104,6 +122,7 @@ def secondderivative(x):
     slope = first2 / run
     return slope
 
+
 print(secondderivative(-1))
 """
 #for x in range [a,b]
@@ -115,6 +134,8 @@ print(secondderivative(-1))
 #        store x in critical-points
 
 
+
+
     
 #for x in range [a,b]
 #    if derivativetwo(x)>0:
@@ -123,4 +144,7 @@ print(secondderivative(-1))
 #        store x in concave-down
 #    else:
 #        store x in inflectionpoint
+
+
+
 
