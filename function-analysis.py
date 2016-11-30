@@ -95,7 +95,9 @@ for x in range(int(a)*1000, (int(b)*1000)+1):
     r = x/1000
     seconds_list.append([r, second(r)])
 
-inflection_points = [[a, round(derivative(a), 3)]]
+print(seconds_list)
+
+inflection_points = []
 for q in range(1, len(seconds_list)-1):
     this_second = seconds_list[q][1]
     if this_second > 0:
@@ -112,8 +114,6 @@ for q in range(1, len(seconds_list)-1):
             inflection_points.append(seconds_list[q])
         if next_deriv < 0 and prev_deriv > 0:
             inflection_points.append(seconds_list[q])
-
-inflection_points.append([b, round(derivative(b), 3)])
 
 i_points = "Points of Inflection (X, Y): "
 for ty in inflection_points:
