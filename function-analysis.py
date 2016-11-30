@@ -30,6 +30,25 @@ for x in range(a*100, (b*100)+1):
     
 print(derivative_list)
 
+local_extrema = []
+prev_deriv = derivative_list[0][1]
+for q in range(1,len(derivative_list)-1):
+    this_deriv = derivative_list[q][1]
+    if this_deriv > 0:
+        prev_deriv = derivative_list[q-1][1]
+        next_deriv = derivative_list[q+1][1]
+        if next_deriv < 0 and prev_deriv > 0:
+            local_extrema.append([(derivative_list[q+1]+derivative_list[q])/2, (next_deriv+this_deriv)/2])
+    elif this_deriv == 0:
+        prev_deriv = derivative_list[q-1][1]
+        next_deriv = derivative_list[q+1][1]
+        if next_deriv > 0 and prev_deriv < 0:
+            local_extrema.append(derivative_list[q])
+        elif next_deriv < 0 and prev_deriv > 0:
+            local_extrema.append(derivative_list[q])
+
+print("local_extrema: " + str(local_extrema))
+
 
 
 
