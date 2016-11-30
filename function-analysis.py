@@ -1,8 +1,8 @@
 
 
 function = input("Function: ").replace("^", "**")
-#a = input("Left Endpoint: ")
-#b = input("Right Endpoint: ")
+#a = float(input("Left Endpoint: "))
+#b = float(input("Right Endpoint: "))
 #print(function.replace("x", "("+str(-1.0)+")"))
 #print(eval(function.replace("x", "("+str(-1.0)+")")))
 def f(x):
@@ -13,8 +13,8 @@ def f(x):
 #    return x**2
 
 
-a = -1
-b = 1
+a = -1.0
+b = 1.0
 
 
 def derivative(x):
@@ -22,32 +22,27 @@ def derivative(x):
     rise = f(x + h) - f(x)
     run = h
     slope = rise / run
-    return round(slope, 9)
-
-
-#print(derivative(-1))
-
+    return slope
 
 derivative_list = []
 
-
-for x in range(a*1000, (b*1000)+1):
+for x in range(int(a)*1000, (int(b)*1000)+1):
     r = x/1000
     derivative_list.append([r, derivative(r)])
     
 #print(derivative_list)
 
 
-local_extrema = [[a, derivative(a)]]
+local_extrema = [[a, round(derivative(a), 3)]]
 for q in range(1,len(derivative_list)-1):
     this_deriv = derivative_list[q][1]
     if this_deriv > 0:
         prev_deriv = derivative_list[q-1][1]
         next_deriv = derivative_list[q+1][1]
         if next_deriv < 0 and prev_deriv > 0:
-            local_extrema.append([(derivative_list[q+1][0]+derivative_list[q][0])/2, (next_deriv+this_deriv)/2])
+            local_extrema.append([round((derivative_list[q+1][0]+derivative_list[q][0])/2, 3), round((next_deriv+this_deriv)/2, 2)])
         if next_deriv > 0 and prev_deriv < 0:
-            local_extrema.append([(derivative_list[q-1][0]+derivative_list[q][0])/2, (prev_deriv+this_deriv)/2])
+            local_extrema.append([round((derivative_list[q-1][0]+derivative_list[q][0])/2, 3), round((prev_deriv+this_deriv)/2, 2)])
     elif this_deriv == 0:
         prev_deriv = derivative_list[q-1][1]
         next_deriv = derivative_list[q+1][1]
@@ -57,10 +52,12 @@ for q in range(1,len(derivative_list)-1):
             local_extrema.append(derivative_list[q])
 
 
-local_extrema.append([b, derivative(b)])
+local_extrema.append([b, round(derivative(b), 2)])
 
-
-print("local_extrema: " + str(local_extrema))
+l_extrema = "Extrema: "
+for ty in local_extrema:
+    l_extrema = l_extrema + " (" + ty[0] + ", " + str(round(f(ty[0]), 3)) + ") "
+print(l_extrema)
 
 
 increasing_ivals = "Increasing: "
