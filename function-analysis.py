@@ -1,21 +1,22 @@
-
+"""
+Dimitri's Function Analysis Python Program
+"""
 
 function = input("Function: ").replace("^", "**")
 #a = float(input("Left Endpoint: "))
 #b = float(input("Right Endpoint: "))
 #print(function.replace("x", "("+str(-1.0)+")"))
 #print(eval(function.replace("x", "("+str(-1.0)+")")))
+
 def f(x):
     return eval(function.replace("x", "("+str(x)+")"))
-
-
-#def f(x):
-#    return x**2
-
 
 a = -1.0
 b = 1.0
 
+"""
+First Derivative Tests
+"""
 
 def derivative(x):
     h = 1/1000000
@@ -29,9 +30,6 @@ derivative_list = []
 for x in range(int(a)*1000, (int(b)*1000)+1):
     r = x/1000
     derivative_list.append([r, derivative(r)])
-    
-#print(derivative_list)
-
 
 local_extrema = [[a, round(derivative(a), 3)]]
 for q in range(1,len(derivative_list)-1):
@@ -59,7 +57,6 @@ for ty in local_extrema:
     l_extrema = l_extrema + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
 print(l_extrema)
 
-
 increasing_ivals = "Increasing: "
 decreasing_ivals = "Decreasing: "
 isdone = False
@@ -82,19 +79,12 @@ print(increasing_ivals)
 print(decreasing_ivals)
 
 
-
-
-
-
 """
-print(round(derivative(-3),5))
-print(round(derivative(-2),5))
-print(round(derivative(-1),5))
-print(round(derivative(0),5))
-print(round(derivative(1),5))
-print(round(derivative(2),5))
-print(round(derivative(3),5))
+Second Derivative Tests
 """
+
+
+
 
 
 def second(x):
