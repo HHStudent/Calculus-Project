@@ -5,7 +5,7 @@ function = input("Function: ").replace("^", "**")
 #print(function.replace("x", "("+str(-1.0)+")"))
 #print(eval(function.replace("x", "("+str(-1.0)+")")))
 def f(x):
-    return eval(function.replace("x", "("+str(x)+")")))
+    return eval(function.replace("x", "("+str(x)+")"))
 
 #def f(x):
 #    return x**2
