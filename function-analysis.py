@@ -74,7 +74,6 @@ while not isdone:
     if current_index > (len(local_extrema) - 2):
         isdone = True
 
-
 print(increasing_ivals)
 print(decreasing_ivals)
 
@@ -90,53 +89,36 @@ def second(x):
     slope = rise / run
     return slope    
 
-print(second(-1))
-
 seconds_list = []
 
 for x in range(int(a)*1000, (int(b)*1000)+1):
     r = x/1000
     seconds_list.append([r, second(r)])
 
-print(seconds_list)
+inflection_points = [[a, round(derivative(a), 3)]]
+for q in range(1, len(seconds_list)-1):
+    this_second = seconds_list[q][1]
+    if this_second > 0:
+        prev_second = seconds_list[q-1][1]
+        next_second = seconds_list[q+1][1]
+        if next_deriv > 0 and prev_deriv < 0:
+            inflection_points.append([round((seconds_list[q+1][0]+seconds_list[q][0])/2, 3),round((next_second+this_second)/2, 3)])
+        if next_deriv < 0 and prev_deriv > 0:
+            inflection_points.append([round((seconds_list[q-1][0]+seconds_list[q][0])/2, 3),round((prev_second+this_second)/2, 3)])
+    elif this_second == 0:
+        prev_second = seconds_list[q-1][1]
+        next_second = seconds_list[q+1][1]
+        if next_deriv > 0 and prev_deriv < 0:
+            inflection_points.append(seconds_list[q])
+        if next_deriv < 0 and prev_deriv > 0:
+            inflection_points.append(seconds_list[q])
 
-#print(second(-1))
+inflection_points.append([b, round(derivative(b), 3)])
 
-
-"""
-def secondderivative(x):
-    h = 1/1000000000
-    rise = f(x + h + h) - f(x + h) - f(x + h) + f(x)
-    rise2 = (f(x + (2*h))) - (2*(f(x + h))) + f(x)
-    first = f(x + h) + f(x + h)
-    first2 = -2 * f(x + h) + f(x + 2*h) - f(x)
-    run = h*h
-    slope = first2 / run
-    return slope
-
-
-print(secondderivative(-1))
-"""
-#for x in range [a,b]
-#    if derivative(x)>0
-#        increasing = x
-#    elif derivative(x)<0
-#        decreasing = x
-#    else:
-#        store x in critical-points
+i_points = "Points of Inflection (X, Y): "
+for ty in inflection_points:
+    i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
+print(i_points)
 
 
-
-
-    
-#for x in range [a,b]
-#    if derivativetwo(x)>0:
-#        store x in concave-up
-#    elif derivativetwo(x)<0:
-#        store x in concave-down
-#    else:
-#        store x in inflectionpoint
-
-
-
-
+#print(seconds_list)
