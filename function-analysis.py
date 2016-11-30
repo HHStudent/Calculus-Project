@@ -62,9 +62,9 @@ while not isdone:
     is_increasing = False
     if f(ival1[0]) < f(ival2[0]):
         is_increasing = True
-        increasing_ivals = increasing_ivals + ", [" + ival1[0] + ", " + ival2[0] + "]"
+        increasing_ivals = increasing_ivals + ", [" + str(ival1[0]) + ", " + str(ival2[0]) + "]"
     else:
-        decreasing_ivals = decreasing_ivals + ", [" + ival1[0] + ", " + ival2[0] + "]"
+        decreasing_ivals = decreasing_ivals + ", [" + str(ival1[0]) + ", " + str(ival2[0]) + "]"
     current_index += 1
     if current_index > (len(local_extrema) - 2):
         isdone = True
