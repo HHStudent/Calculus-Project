@@ -52,7 +52,25 @@ local_extrema.append([b, derivative(b)])
 
 print("local_extrema: " + str(local_extrema))
 
+increasing_ivals = ""
+decreasing_ivals = ""
+isdone = False
+current_index = 0
+while not isdone:
+    ival1 = local_extrema[current_index]
+    ival2 = local_extrema[current_index + 1]
+    is_increasing = False
+    if f(ival1[0]) < f(ival2[0]):
+        is_increasing = True
+        increasing_ivals = increasing_ivals + ", [" + ival1[0] + ", " + ival2[0] + "]"
+    else:
+        decreasing_ivals = decreasing_ivals + ", [" + ival1[0] + ", " + ival2[0] + "]"
+    current_index += 1
+    if current_index > (len(local_extrema) - 2):
+        isdone = True
 
+print(increasing_ivals, decreasing_ivals)
+    
 
 
 
