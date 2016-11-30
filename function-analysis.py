@@ -1,7 +1,7 @@
 
 function = input("Function: ").replace("^", "**")
-a = input("Left Endpoint: ")
-b = input("Right Endpoint: ")
+#a = input("Left Endpoint: ")
+#b = input("Right Endpoint: ")
 
 def f(x):
     return eval(function.replace("x", str(x)))
@@ -13,14 +13,21 @@ a = -1
 b = 1
 
 def derivative(x):
-    h = 1/1000000000
+    h = 1/1000000
     rise = f(x + h) - f(x)
     run = h
     slope = rise / run
-    return slope
+    return round(slope, 4)
 
 print(derivative(-1))
 
+derivative_list = []
+
+for x in range(a*100, (b*100)+1):
+    r = x/100
+    derivative_list.append([r, derivative(r)])
+    
+print(derivative_list)
 
 
 
