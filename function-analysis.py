@@ -95,8 +95,6 @@ for x in range(int(a)*1000, (int(b)*1000)+1):
     r = x/1000
     seconds_list.append([r, second(r)])
 
-print(seconds_list)
-
 inflection_points = []
 for q in range(1,len(seconds_list)-1):
     this_deriv = seconds_list[q][1]
@@ -107,29 +105,41 @@ for q in range(1,len(seconds_list)-1):
             inflection_points.append([round((seconds_list[q+1][0]+seconds_list[q][0])/2, 3), round((next_deriv+this_deriv)/2, 2)])
         if next_deriv > 0 and prev_deriv < 0:
             inflection_points.append([round((seconds_list[q-1][0]+seconds_list[q][0])/2, 3), round((prev_deriv+this_deriv)/2, 2)])
-"""
-inflection_points = []
-for q in range(1, len(seconds_list)-1):
-    this_second = seconds_list[q][1]
-    if this_second > 0:
-        prev_second = seconds_list[q-1][1]
-        next_second = seconds_list[q+1][1]
-        if next_deriv > 0 and prev_deriv < 0:
-            inflection_points.append([round((seconds_list[q+1][0]+seconds_list[q][0])/2, 3),round((next_second+this_second)/2, 3)])
-        if next_deriv < 0 and prev_deriv > 0:
-            inflection_points.append([round((seconds_list[q-1][0]+seconds_list[q][0])/2, 3),round((prev_second+this_second)/2, 3)])
-    elif this_second == 0:
-        prev_second = seconds_list[q-1][1]
-        next_second = seconds_list[q+1][1]
+    elif this_deriv == 0:
+        prev_deriv = seconds_list[q-1][1]
+        next_deriv = seconds_list[q+1][1]
         if next_deriv > 0 and prev_deriv < 0:
             inflection_points.append(seconds_list[q])
-        if next_deriv < 0 and prev_deriv > 0:
+        elif next_deriv < 0 and prev_deriv > 0:
             inflection_points.append(seconds_list[q])
-"""
+
+
 i_points = "Points of Inflection (X, Y): "
 for ty in inflection_points:
     i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
 print(i_points)
 
 
-#print(seconds_list)
+conup = "Concave Up: "
+condown = "Concave Down: "
+isfinished = False
+current_order = 0
+while not isfinished:
+    ival1 = inflection_points[current_order]
+    ival2 = inflection_points[current_order + 1]
+    is_increasing = False
+    if f(ival1[0]) < f(ival2[0]):
+        is_increasing = True
+        increasing_ivals = increasing_ivals + " [" + str(ival1[0]) + ", " + str(ival2[0]) + "]"
+    else:
+        decreasing_ivals = decreasing_ivals + " [" + str(ival1[0]) + ", " + str(ival2[0]) + "]"
+    current_order += 1
+    if current_order > (len(inflection_points) - 2):
+        isfinished = True
+
+print(increasing_ivals)
+print(decreasing_ivals)
+
+
+
+
