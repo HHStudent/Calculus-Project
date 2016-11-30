@@ -83,17 +83,22 @@ print(decreasing_ivals)
 Second Derivative Tests
 """
 
-
-
-
-
 def second(x):
-    h = 1/1000000000
-    top = derivative(x + h) - derivative(x)
-    bottom = h
-    answers = top / bottom
-    return answers
+    h = 1/1000000
+    rise = derivative(x + h) - derivative(x)
+    run = h
+    slope = rise / run
+    return slope    
 
+print(second(-1))
+
+seconds_list = []
+
+for x in range(int(a)*1000, (int(b)*1000)+1):
+    r = x/1000
+    seconds_list.append([r, second(r)])
+
+print(seconds_list)
 
 #print(second(-1))
 
