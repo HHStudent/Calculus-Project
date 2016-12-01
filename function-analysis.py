@@ -127,7 +127,6 @@ inflection_points.append([b, round(second(b), 2)])
 i_points = "Points of Inflection (X, Y): "
 for ty in inflection_points:
     i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
-i_points = [x[1:len(i_points)-1] for x in i_points]
 print(i_points)
 
 #Identifies concave up and concave down intervals using points of inflection, by checking first interval then alternating for next intervals
