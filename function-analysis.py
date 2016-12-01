@@ -95,7 +95,7 @@ for x in range(int(a)*1000, (int(b)*1000)+1):
     r = x/1000
     seconds_list.append([r, second(r)])
 
-inflection_points = []
+inflection_points = [[a, round(second(a), 3)]]
 for q in range(1,len(seconds_list)-1):
     this_deriv = seconds_list[q][1]
     if this_deriv > 0:
@@ -112,6 +112,8 @@ for q in range(1,len(seconds_list)-1):
             inflection_points.append(seconds_list[q])
         elif next_deriv < 0 and prev_deriv > 0:
             inflection_points.append(seconds_list[q])
+
+inflection_points.append([b, round(second(b), 2)])
 
 
 i_points = "Points of Inflection (X, Y): "
@@ -130,16 +132,14 @@ while not isfinished:
     is_increasing = False
     if f(ival1[0]) < f(ival2[0]):
         is_increasing = True
-        increasing_ivals = increasing_ivals + " [" + str(ival1[0]) + ", " + str(ival2[0]) + "]"
+        conup = conup + " (" + str(ival1[0]) + ", " + str(ival2[0]) + ")"
     else:
-        decreasing_ivals = decreasing_ivals + " [" + str(ival1[0]) + ", " + str(ival2[0]) + "]"
+        condown = condown + " (" + str(ival1[0]) + ", " + str(ival2[0]) + ")"
     current_order += 1
     if current_order > (len(inflection_points) - 2):
         isfinished = True
 
-print(increasing_ivals)
-print(decreasing_ivals)
-
-
+print(conup)
+print(condown)
 
 
