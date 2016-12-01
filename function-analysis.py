@@ -49,8 +49,8 @@ for q in range(1,len(derivative_list)-1):
         next_deriv = derivative_list[q+1][1]
         if next_deriv > 0 and prev_deriv < 0:
             local_extrema.append(derivative_list[q])
-        elif next_deriv < 0 and prev_deriv > 0:
             local_extrema.append(derivative_list[q])
+        elif next_deriv < 0 and prev_deriv > 0:
 
 #Adds endpoints to critical points list
 local_extrema.append([b, round(derivative(b), 2)])
