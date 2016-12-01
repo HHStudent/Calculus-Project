@@ -119,7 +119,6 @@ inflection_points.append([b, round(second(b), 2)])
 i_points = "Points of Inflection (X, Y): "
 for ty in inflection_points:
     i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
-i_points = i_points.remove(0,len(i_points))
 print(i_points)
 
 
@@ -131,7 +130,7 @@ while not isfinished:
     ival1 = inflection_points[current_order]
     ival2 = inflection_points[current_order + 1]
     is_increasing = False
-    if f(ival1[0]) < f(ival2[0]):
+    if derivative(ival1[0]) < derivative(ival2[0]):
         is_increasing = True
         conup = conup + " (" + str(ival1[0]) + ", " + str(ival2[0]) + ")"
     else:
