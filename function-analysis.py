@@ -51,6 +51,7 @@ for q in range(1,len(derivative_list)-1):
             local_extrema.append(derivative_list[q])
             local_extrema.append(derivative_list[q])
         elif next_deriv < 0 and prev_deriv > 0:
+            local_extrema.append(derivative_list[q])
 
 #Adds endpoints to critical points list
 local_extrema.append([b, round(derivative(b), 2)])
@@ -126,6 +127,7 @@ inflection_points.append([b, round(second(b), 2)])
 i_points = "Points of Inflection (X, Y): "
 for ty in inflection_points:
     i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
+i_points = [x[1:len(i_points)-1] for x in i_points]
 print(i_points)
 
 #Identifies concave up and concave down intervals using points of inflection, by checking first interval then alternating for next intervals
@@ -149,5 +151,4 @@ while not isfinished:
 #Prints concave up and concave down intervals
 print(conup)
 print(condown)
-
 
