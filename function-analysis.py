@@ -123,12 +123,6 @@ for q in range(1,len(seconds_list)-1):
             inflection_points.append(seconds_list[q])
 inflection_points.append([b, round(second(b), 2)])
 
-#Neatly formats and prints points of inflection
-i_points = "Points of Inflection (X, Y): "
-for ty in inflection_points:
-    i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
-print(i_points)
-
 #Identifies concave up and concave down intervals using points of inflection, by checking first interval then alternating for next intervals
 conup = "Concave Up: "
 condown = "Concave Down: "
@@ -146,6 +140,16 @@ while not isfinished:
     current_order += 1
     if current_order > (len(inflection_points) - 2):
         isfinished = True
+
+del inflection_points[0]
+del inflection_points[-1]
+#Neatly formats and prints points of inflection
+i_points = "Points of Inflection (X, Y): "
+for ty in inflection_points:
+    i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
+print(i_points)
+
+
 
 #Prints concave up and concave down intervals
 print(conup)
