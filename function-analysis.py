@@ -141,15 +141,13 @@ while not isfinished:
     if current_order > (len(inflection_points) - 2):
         isfinished = True
 
+#Neatly formats and prints points of inflection
 del inflection_points[0]
 del inflection_points[-1]
-#Neatly formats and prints points of inflection
 i_points = "Points of Inflection (X, Y): "
 for ty in inflection_points:
     i_points = i_points + " (" + str(ty[0]) + ", " + str(round(f(ty[0]), 3)) + ") "
 print(i_points)
-
-
 
 #Prints concave up and concave down intervals
 print(conup)
